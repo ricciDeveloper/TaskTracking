@@ -1,60 +1,87 @@
-// Captura os elementos do DOM
 const btnAdicionar = document.getElementById("btnAdicionar");
 const inputTarefa = document.getElementById("inputTarefa");
-const listaTarefas = document.querySelector(".listaTarefas"); // Usando querySelector para pegar o primeiro elemento com essa classe
+const listaTarefas = document.querySelector(".listaTarefas");
+const tarefasConcluidas = document.querySelector(".tarefasConcluidas"); // nova div
 
-// Função para adicionar uma nova tarefa
 function adicionarTarefa() {
-      const tarefaNome = inputTarefa.value.trim(); // Captura o valor do input e remove espaços em branco
+  const tarefaNome = inputTarefa.value.trim();
 
-      if (tarefaNome === "") {
-        alert("Por favor, insira uma tarefa."); // Alerta se o campo estiver vazio
-        return;
-      }
+  if (tarefaNome === "") {
+    alert("Por favor, insira uma tarefa.");
+    return;
+  }
 
-      // Cria o item da tarefa
-      const tarefaItem = document.createElement('div');
-      tarefaItem.classList.add('tarefa');
+  const tarefaItem = document.createElement('div');
+  tarefaItem.classList.add('tarefa');
 
-      // Cria o parágrafo com o nome da tarefa
-      const paragrafo = document.createElement('p');
-      paragrafo.textContent = tarefaNome;
-      tarefaItem.appendChild(paragrafo);
+  const paragrafo = document.createElement('p');
+  paragrafo.textContent = tarefaNome;
+  tarefaItem.appendChild(paragrafo);
 
-      // Cria o botão de remover
-      const btnRemover = document.createElement('button');
-      btnRemover.classList.add('btnRemover');
-      btnRemover.textContent = "";
-      btnRemover.addEventListener("click", removerTarefa);
-      tarefaItem.appendChild(btnRemover);
+  const btnRemover = document.createElement('button');
+  btnRemover.classList.add('btnRemover');
+  btnRemover.textContent = "";
+  btnRemover.addEventListener("click", removerTarefa);
+  tarefaItem.appendChild(btnRemover);
 
-      // Cria o botão de play
-      const btnPlay = document.createElement('button');
-      btnPlay.classList.add('play');
-      tarefaItem.appendChild(btnPlay);
+  const btnPlay = document.createElement('button');
+  btnPlay.classList.add('play');
+  btnPlay.textContent = "";
+  tarefaItem.appendChild(btnPlay);
 
-      // Adiciona a tarefa à lista
-      listaTarefas.appendChild(tarefaItem);
+  const btnStop = document.createElement('button');
+  btnStop.classList.add('stop');
+  btnStop.textContent = "";
+  tarefaItem.appendChild(btnStop);
 
-      // Limpa o campo de entrada
-      inputTarefa.value = "";
-}
-function removerTarefa(event) {
+  let timer = null;
+  let segundos = 0;
 
-      const tarefaItem = event.target.parentElement; // Captura o elemento pai do botão clicado
-      tarefaItem.remove(); // Remove a tarefa da lista
+  function iniciarCronometro(event) {
+    const tarefaNomeAtual = paragrafo.textContent.split(" - ")[0];
+    if (timer !== null) return;
 
+    timer = setInterval(() => {
+      segundos++;
+      const horas = Math.floor(segundos / 3600);
+      const minutos = Math.floor((segundos % 3600) / 60);
+      const segundosRestantes = segundos % 60;
 
-}
+      paragrafo.textContent = `${tarefaNomeAtual} - ${String(horas).padStart(2, '0')}:${String(minutos).padStart(2, '0')}:${String(segundosRestantes).padStart(2, '0')}`;
+    }, 1000);
+  }
 
-// Evento para o botão "Adicionar"
-    btnAdicionar.addEventListener("click", adicionarTarefa); // Adiciona um evento de clique ao botão "Adicionar"
+  function pararCronometro() {
+    if (timer !== null) {
+      clearInterval(timer);
+      timer = null;
 
-// Permitir adicionar tarefas pressionando "Enter"
-    inputTarefa.addEventListener("keypress", function(event) {
-  
-  
-    if (event.key === "Enter") { // Verifica se a tecla pressionada é "Enter"
-            adicionarTarefa(); // Chama a função para adicionar a tarefa
+      // Mover tarefa para "tarefas concluídas"
+      const tarefaFinalizada = tarefaItem.cloneNode(true); // clona a tarefa
+      const btns = tarefaFinalizada.querySelectorAll("button");
+      btns.forEach(btn => btn.remove()); // remove os botões da tarefa concluída
+
+      tarefasConcluidas.appendChild(tarefaFinalizada);
+      tarefaItem.remove(); // remove da lista ativa
     }
+  }
+
+  btnPlay.addEventListener("click", iniciarCronometro);
+  btnStop.addEventListener("click", pararCronometro);
+
+  listaTarefas.appendChild(tarefaItem);
+  inputTarefa.value = "";
+}
+
+function removerTarefa(event) {
+  const tarefaItem = event.target.parentElement;
+  tarefaItem.remove();
+}
+
+btnAdicionar.addEventListener("click", adicionarTarefa);
+
+inputTarefa.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    adicionarTarefa();
+  }
 });

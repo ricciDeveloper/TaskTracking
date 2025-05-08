@@ -1,29 +1,181 @@
 /* HEADER */
 header {
+  width: 100vw;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.473);
+}
+
+header h1 {
+  color: white;
+  font-size: 2em;
+}
+
+/* MAIN */
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  background-color: #f0f0f0;
+}
+main input {
+  width: 300px;
+  height: 40px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+}
+main button {
+  width: 100px;
+  height: 40px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+main button:hover {
+  background-color: #9500f8;
+  font-weight: bold;
+}
+.listaTarefas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+.tarefa {
+  width: 500px;
+  height: 50px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.tarefa p {
+  margin: 0;
+  font-size: 1.2em;
+  flex-grow: 1;
+  text-align: left;
+  padding: 0 10px;
+}
+
+.btnRemover {
+  background-image: url("../images/icons/lixeiraIcon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgba(255, 99, 71, 0);
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.btnRemover:hover {
+  background-color: #00000000;
+  font-weight: bold;
+}
+.play {
+  width: 30px;
+  height: 30px;
+  background-image: url("../images/icons/playIcon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.play:hover {
+  transform: scale(1.1);
+  transition: transform 0.2s ease-in-out;
+  background-color: #00000000;
+}
+.stop {
+    width: 30px;
+    height: 30px;
+    background-image: url("../images/icons/stop.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  .stop:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease-in-out;
+    background-color: #00000000;
+  }
+
+/*  FOOTER */
+footer {
+  width: 100vw;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.473);
+}
+footer p {
+  color: white;
+  font-size: 1em;
+}
+footer a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+  /* HEADER */
+header {
     width: 100vw;
     height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.473);
-}
-
-header h1 {
+  }
+  
+  header h1 {
     color: white;
     font-size: 2em;
-}
-
-/* MAIN */
-
-main {
+  }
+  
+  /* MAIN */
+  
+  main {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 90vh;
     background-color: #f0f0f0;
-
-}
-main input {
+  }
+  main input {
     width: 300px;
     height: 40px;
     padding: 10px;
@@ -33,30 +185,30 @@ main input {
     margin-right: 10px;
     display: flex;
     flex-direction: column;
-}
-main button {
+  }
+  main button {
     width: 100px;
     height: 40px;
-    background-color: #007BFF;
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
     font-size: 1em;
     cursor: pointer;
     margin-top: 10px;
-}
-
-main button:hover {
+  }
+  
+  main button:hover {
     background-color: #9500f8;
     font-weight: bold;
-}
-.listaTarefas {
+  }
+  .listaTarefas {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
-}
-.tarefa {
+  }
+  .tarefa {
     width: 500px;
     height: 50px;
     padding: 10px;
@@ -68,18 +220,18 @@ main button:hover {
     justify-content: space-between;
     align-items: center;
     gap: 10px;
-}
-
-.tarefa p {
+  }
+  
+  .tarefa p {
     margin: 0;
     font-size: 1.2em;
     flex-grow: 1;
     text-align: left;
     padding: 0 10px;
-}
-
-.btnRemover {
-    background-image: url('../images/icons/lixeiraIcon.png');
+  }
+  
+  .btnRemover {
+    background-image: url("../images/icons/lixeiraIcon.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -90,15 +242,15 @@ main button:hover {
     border-radius: 5px;
     cursor: pointer;
     margin-bottom: 10px;
-}
-.btnRemover:hover {
+  }
+  .btnRemover:hover {
     background-color: #00000000;
     font-weight: bold;
-}
-.play {
+  }
+  .play {
     width: 30px;
     height: 30px;
-    background-image: url('../images/icons/playIcon.png');
+    background-image: url("../images/icons/playIcon.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -107,34 +259,201 @@ main button:hover {
     border-radius: 5px;
     cursor: pointer;
     margin-bottom: 10px;
-}
-.play:hover {
+  }
+  .play:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease-in-out;
     background-color: #00000000;
-    font-weight: bold;
-                    transform: perspective(100px)
-                    rotateY(180deg)
-                    rotateY(180deg)
-                    translateZ(0px);
-                    transform-style: preserve-3d;
-    transition: transform 0.5s;
-}
-
-
-/*  FOOTER */
-footer {
+  }
+  .stop {
+      width: 30px;
+      height: 30px;
+      background-image: url("../images/icons/stop.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: transparent;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+    .stop:hover {
+      transform: scale(1.1);
+      transition: transform 0.2s ease-in-out;
+      background-color: #00000000;
+    }
+  
+  /*  FOOTER */
+  footer {
     width: 100vw;
     height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.473);
-}
-footer p {
+  }
+  footer p {
     color: white;
     font-size: 1em;
-}
-footer a {
+  }
+  footer a {
     color: white;
     text-decoration: none;
     font-weight: bold;
+  }
+}
+
+@media screen and (max-width: 480px) {
+ /* HEADER */
+header {
+    width: 100vw;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.473);
+  }
+  
+  header h1 {
+    color: white;
+    font-size: 0.6em;
+  }
+  
+  /* MAIN */
+  
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    background-color: #f0f0f0;
+  }
+  main input {
+    width: 200px;
+    height: 30px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.6em;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  main button {
+    width: 60px;
+    height: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.5em;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  main button:hover {
+    background-color: #9500f8;
+    font-weight: bold;
+  }
+  .listaTarefas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  .tarefa {
+    width: 500px;
+    height: 50px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .tarefa p {
+    margin: 0;
+    font-size: 1.2em;
+    flex-grow: 1;
+    text-align: left;
+    padding: 0 10px;
+  }
+  
+  .btnRemover {
+    background-image: url("../images/icons/lixeiraIcon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgba(255, 99, 71, 0);
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  .btnRemover:hover {
+    background-color: #00000000;
+    font-weight: bold;
+  }
+  .play {
+    width: 30px;
+    height: 30px;
+    background-image: url("../images/icons/playIcon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  .play:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease-in-out;
+    background-color: #00000000;
+  }
+  .stop {
+      width: 30px;
+      height: 30px;
+      background-image: url("../images/icons/stop.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: transparent;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+    .stop:hover {
+      transform: scale(1.1);
+      transition: transform 0.2s ease-in-out;
+      background-color: #00000000;
+    }
+  
+  /*  FOOTER */
+  footer {
+    width: 100vw;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.473);
+  }
+  footer p {
+    color: white;
+    font-size: 1em;
+  }
+  footer a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
 }
