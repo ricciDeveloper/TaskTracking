@@ -4,67 +4,93 @@ const listaTarefas = document.querySelector(".listaTarefas");
 const tarefasConcluidas = document.querySelector(".tarefasConcluidas"); // nova div
 
 function adicionarTarefa() {
-  const tarefaNome = inputTarefa.value.trim();
+      const tarefaNome = inputTarefa.value.trim();
 
-  if (tarefaNome === "") {
-    alert("Por favor, insira uma tarefa.");
-    return;
+      if (tarefaNome === "") {
+        alert("Por favor, insira uma tarefa.");
+        return;
+      }
+
+      const tarefaItem = document.createElement('div');
+      tarefaItem.classList.add('tarefa');
+
+      const paragrafo = document.createElement('p');
+      paragrafo.textContent = tarefaNome;
+      tarefaItem.appendChild(paragrafo);
+
+      const btnRemover = document.createElement('button');
+      btnRemover.classList.add('btnRemover');
+      btnRemover.textContent = "";
+      btnRemover.addEventListener("click", removerTarefa);
+      tarefaItem.appendChild(btnRemover);
+
+      const btnPlay = document.createElement('button');
+      btnPlay.classList.add('play');
+      btnPlay.textContent = "";
+      tarefaItem.appendChild(btnPlay);
+
+      const btnStop = document.createElement('button');
+      btnStop.classList.add('stop');
+      btnStop.textContent = "";
+      tarefaItem.appendChild(btnStop);
+
+      let timer = null;
+      let segundos = 0;
+    //Função para iniciar o cronômetro
+      // e atualizar o texto do parágrafo
+      function iniciarCronometro(event) {
+        const tarefaNomeAtual = paragrafo.textContent.split(" - ")[0];
+        if (timer !== null) return;
+
+        timer = setInterval(() => {
+          segundos++;
+          const horas = Math.floor(segundos / 3600);
+          const minutos = Math.floor((segundos % 3600) / 60);
+          const segundosRestantes = segundos % 60;
+
+          paragrafo.textContent = `${tarefaNomeAtual} - ${String(horas).padStart(2, '0')}:${String(minutos).padStart(2, '0')}:${String(segundosRestantes).padStart(2, '0')}`;
+        }, 1000);
   }
+// Função para parar o cronômetro
+  // e mover a tarefa para "tarefas concluídas"
+    function pararCronometro() {
+      if (timer !== null) {
+        clearInterval(timer);
+        timer = null;
 
-  const tarefaItem = document.createElement('div');
-  tarefaItem.classList.add('tarefa');
+        // Obter a data atual no formato dd/mm/yy
+        const agora = new Date();
+        const dia = String(agora.getDate()).padStart(2, '0');
+        const mes = String(agora.getMonth() + 1).padStart(2, '0'); // meses começam do 0
+        const ano = String(agora.getFullYear()).slice(-2); // pega os dois últimos dígitos do ano
+        const dataFormatada = `${dia}/${mes}/${ano}`;
 
-  const paragrafo = document.createElement('p');
-  paragrafo.textContent = tarefaNome;
-  tarefaItem.appendChild(paragrafo);
+        // Atualiza o texto do parágrafo com a data de finalização
+        const tarefaNomeAtual = paragrafo.textContent.split(" - ")[0];
+        const horas = Math.floor(segundos / 3600);
+        const minutos = Math.floor((segundos % 3600) / 60);
+        const segundosRestantes = segundos % 60;
+        const tempoFinal = `${String(horas).padStart(2, '0')}:${String(minutos).padStart(2, '0')}:${String(segundosRestantes).padStart(2, '0')}`;
 
-  const btnRemover = document.createElement('button');
-  btnRemover.classList.add('btnRemover');
-  btnRemover.textContent = "";
-  btnRemover.addEventListener("click", removerTarefa);
-  tarefaItem.appendChild(btnRemover);
+        paragrafo.textContent = `${tarefaNomeAtual} - ${tempoFinal} - ${dataFormatada}`;
 
-  const btnPlay = document.createElement('button');
-  btnPlay.classList.add('play');
-  btnPlay.textContent = "";
-  tarefaItem.appendChild(btnPlay);
+        // Mover tarefa para "tarefas concluídas"
+        const tarefaFinalizada = tarefaItem.cloneNode(true); // clona a tarefa
+        const btns = tarefaFinalizada.querySelectorAll("button");
+        btns.forEach(btn => btn.remove()); // remove os botões da tarefa concluída
 
-  const btnStop = document.createElement('button');
-  btnStop.classList.add('stop');
-  btnStop.textContent = "";
-  tarefaItem.appendChild(btnStop);
+        // Criar e adicionar o emoji ✔️ no canto direito
+        const emojiCheck = document.createElement("span");
+        emojiCheck.textContent = "✔️";
+        emojiCheck.style.float = "right";
+        emojiCheck.style.marginLeft = "10px";
+        tarefaFinalizada.appendChild(emojiCheck);
 
-  let timer = null;
-  let segundos = 0;
-
-  function iniciarCronometro(event) {
-    const tarefaNomeAtual = paragrafo.textContent.split(" - ")[0];
-    if (timer !== null) return;
-
-    timer = setInterval(() => {
-      segundos++;
-      const horas = Math.floor(segundos / 3600);
-      const minutos = Math.floor((segundos % 3600) / 60);
-      const segundosRestantes = segundos % 60;
-
-      paragrafo.textContent = `${tarefaNomeAtual} - ${String(horas).padStart(2, '0')}:${String(minutos).padStart(2, '0')}:${String(segundosRestantes).padStart(2, '0')}`;
-    }, 1000);
-  }
-
-  function pararCronometro() {
-    if (timer !== null) {
-      clearInterval(timer);
-      timer = null;
-
-      // Mover tarefa para "tarefas concluídas"
-      const tarefaFinalizada = tarefaItem.cloneNode(true); // clona a tarefa
-      const btns = tarefaFinalizada.querySelectorAll("button");
-      btns.forEach(btn => btn.remove()); // remove os botões da tarefa concluída
-
-      tarefasConcluidas.appendChild(tarefaFinalizada);
-      tarefaItem.remove(); // remove da lista ativa
+        tarefasConcluidas.appendChild(tarefaFinalizada);
+        tarefaItem.remove(); // remove da lista ativa
+      }
     }
-  }
+
 
   btnPlay.addEventListener("click", iniciarCronometro);
   btnStop.addEventListener("click", pararCronometro);
@@ -74,8 +100,8 @@ function adicionarTarefa() {
 }
 
 function removerTarefa(event) {
-  const tarefaItem = event.target.parentElement;
-  tarefaItem.remove();
+      const tarefaItem = event.target.parentElement;
+      tarefaItem.remove();
 }
 
 btnAdicionar.addEventListener("click", adicionarTarefa);
