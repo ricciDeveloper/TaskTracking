@@ -20,18 +20,18 @@ function adicionarTarefa() {
 
   const btnRemover = document.createElement("button");
   btnRemover.classList.add("btnRemover");
-  btnRemover.textContent = "";
+  btnRemover.textContent = "🗑️";
   btnRemover.addEventListener("click", removerTarefa);
   tarefaItem.appendChild(btnRemover);
 
   const btnPlay = document.createElement("button");
   btnPlay.classList.add("play");
-  btnPlay.textContent = "";
+  btnPlay.textContent = "▶";
   tarefaItem.appendChild(btnPlay);
 
   const btnStop = document.createElement("button");
   btnStop.classList.add("stop");
-  btnStop.textContent = "";
+  btnStop.textContent = "❌";
   tarefaItem.appendChild(btnStop);
 
   let timer = null;
