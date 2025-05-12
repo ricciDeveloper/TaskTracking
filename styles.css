@@ -80,7 +80,7 @@ main button:hover {
 }
 
 .btnRemover {
-  background-image: url("../images/icons/lixeiraIcon.png");
+  background-image: url("assets/images/icons/lixeiraIcon.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -99,7 +99,7 @@ main button:hover {
 .play {
   width: 30px;
   height: 30px;
-  background-image: url("../images/icons/playIcon.png");
+  background-image: url("assets/images/icons/playIcon.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -117,7 +117,7 @@ main button:hover {
 .stop {
     width: 30px;
     height: 30px;
-    background-image: url("../images/icons/stop.png");
+    background-image: url("assets/images/icons/stop.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -235,7 +235,7 @@ header {
   }
   
   .btnRemover {
-    background-image: url("../images/icons/lixeiraIcon.png");
+    background-image: url("assets/images/icons/lixeiraIcon.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -254,7 +254,7 @@ header {
   .play {
     width: 30px;
     height: 30px;
-    background-image: url("../images/icons/playIcon.png");
+    background-image: url("assets/images/icons/playIcon.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -272,7 +272,7 @@ header {
   .stop {
       width: 30px;
       height: 30px;
-      background-image: url("../images/icons/stop.png");
+      background-image: url("assets/images/icons/stop.png");
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
@@ -390,7 +390,7 @@ header {
   }
   
   .btnRemover {
-    background-image: url("../images/icons/lixeiraIcon.png");
+    background-image: url("assets/images/icons/lixeiraIcon.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -409,7 +409,7 @@ header {
   .play {
     width: 15px;
     height: 15px;
-    background-image: url("../images/icons/playIcon.png");
+    background-image: url("assets/images/icons/playIcon.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -427,7 +427,7 @@ header {
   .stop {
       width: 15px;
       height: 15px;
-      background-image: url("../images/icons/stop.png");
+      background-image: url("assets/images/icons/stop.png");
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
