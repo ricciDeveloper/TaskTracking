@@ -5,10 +5,10 @@ Este é um projeto simples de **lista de tarefas com controle de tempo** (play/s
 ## 🚀 Funcionalidades
 
 - ✅ Adicionar tarefas à lista
-- 🕐 Iniciar e pausar o controle de tempo por tarefa
+- 🕐 Iniciar e parar o controle de tempo por tarefa
 - 🗑️ Remover tarefas individualmente
 - 📌 Listar tarefas concluídas separadamente
-- 💾 Armazenamento local (opcional com `localStorage`, próxima implementação)
+- 💾 Armazenamento local (com `localStorage`)
 
 ## 🎨 Tecnologias Utilizadas
 
