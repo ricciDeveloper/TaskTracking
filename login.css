@@ -1,0 +1,27 @@
+@import url('assets/components/_footer.css');
+@import url('assets/components/_header.css');
+@import url('assets/components/_main.css');
+
+header{
+ width: 100vw;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.473);
+}
+.login{
+    justify-content:center;
+}
+
+.login input{
+    width: 400px;
+    margin: 10px;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.login button{
+    border-radius: 20px;
+    width: 150px;
+}

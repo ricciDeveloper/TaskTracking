@@ -1,0 +1,18 @@
+/*  FOOTER */
+footer {
+  width: 100vw;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.473);
+}
+footer p {
+  color: white;
+  font-size: 1em;
+}
+footer a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
