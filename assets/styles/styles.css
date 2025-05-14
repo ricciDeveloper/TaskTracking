@@ -1,6 +1,7 @@
-@import url('assets/components/_footer.css');
-@import url('assets/components/_header.css');
-@import url('assets/components/_main.css');
+@import url('../styles/components/_footer.css');
+@import url('../styles/components/_header.css');
+@import url('../styles/components/_main.css');
+@import url('../styles/components/_responsividade.css');
 
 .listaTarefas {
   display: flex;
